@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de memoria</title>
+    <link rel="icon" type="image/png" href="resources/img/favicon.png">
+    <link rel="stylesheet" href="style/style.css">
+    <script src="scripts/utils/utils.js"></script>
+    <script src="scripts/models/card.js"></script>
+    <script src="scripts/components/cardComponent.js"></script>
+    <script src="scripts/components/boardComponent.js" defer></script>
+    <script src="scripts/components/headerComponent.js" defer></script>
+</head>
+<body>
+    <div class="header">
+        <h1>JUEGO DE MEMORIA</h1>
+        <div id="newGameBtn">
+            <input type="text" id="pairNumber" placeholder="Número de parejas">
+            <button id="newGame" disabled>Nueva partida</button>
+        </div>
+        <div id="gameHUD">
+            <div id="timer">
+                <h2>00:00:00</h2>
+            </div>
+            <div id="score">
+                <h2>Score: 0</h2>
+            </div>
+            <div id="moves">
+                <h2>Moves: 0</h2>
+            </div>
+        </div>
+    </div>
+    <div id="gameBoard">
+
+    </div>
+</body>
+</html>
