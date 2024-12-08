@@ -9,30 +9,37 @@
     <script src="scripts/utils/utils.js"></script>
     <script src="scripts/models/card.js"></script>
     <script src="scripts/components/cardComponent.js"></script>
+    <script src="scripts/components/movesComponent.js" defer></script>
+    <script src="scripts/components/scoreComponent.js" defer></script>
+    <script src="scripts/components/timerComponent.js" defer></script>
     <script src="scripts/components/boardComponent.js" defer></script>
     <script src="scripts/components/headerComponent.js" defer></script>
 </head>
 <body>
     <div class="header">
-        <h1>JUEGO DE MEMORIA</h1>
+        <div class="title">
+            <img class="logo" src="resources/img/back.png" alt="logo">
+            <h1>JUEGO DE MEMORIA</h1>
+        </div>
         <div id="newGameBtn">
-            <input type="text" id="pairNumber" placeholder="Número de parejas">
+            <input type="text" id="pairNumber" placeholder="Número de parejas (2-20)">
             <button id="newGame" disabled>Nueva partida</button>
         </div>
         <div id="gameHUD">
             <div id="timer">
-                <h2>00:00:00</h2>
             </div>
             <div id="score">
-                <h2>Score: 0</h2>
             </div>
             <div id="moves">
-                <h2>Moves: 0</h2>
             </div>
         </div>
     </div>
-    <div id="gameBoard">
+    <div id="fullGameBoard">
+        <h1 id="gameOver">HAS GANADO</h1>
+        <button id="resetBtn">Reiniciar</button>
+        <div id="gameBoard">
 
+        </div>
     </div>
 </body>
 </html>

@@ -1,6 +1,8 @@
 :root {
     --bg-color: #232f3e;
     --text-color: #f5f5f5;
+    --golden-color: #FFD700;
+    --blue-color: #deedff;
 }
 
 body {
@@ -47,6 +49,12 @@ button {
     padding: 10px;
 }
 
+#fullGameBoard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 #gameBoard {
     display: flex;
     flex-direction: row;
@@ -54,18 +62,187 @@ button {
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    margin-block: 30px;
+    padding-block: 30px;
 }
 
 .card-container {
+    perspective: 1000px;
+    position: relative;
     width: 10vw;
     height: 15vw;
-    background-color: var(--text-color);
+    background-color: var(--bg-color);
     color: var(--bg-color);
     border-radius: 5px;
 }
 
-.card-container img {
+.card {
+    position: absolute;
     width: 100%;
     height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.card-container .card {
+    transform: rotateY(180deg);
+}
+
+.card-container.flipped .card {
+    transform: rotateY(0deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 5px;
+}
+
+.card-front {
+    background-color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-front img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border: 2px solid var(--golden-color);
+    border-radius: 8px;
+}
+
+.card-back {
+    border-radius: 8px;
+    border: 2px solid var(--text-color);
+    background-color: var(--blue-color);
+    transform: rotateY(180deg);
+}
+
+.card-container img {
+    width: 10vw;
+    height: 15vw;
+}
+
+.card-img-default {
+    border-color: var(--text-color);
+}
+
+.card-img-default img {
+    width: 10vw;
+    height: 15vw;
+}
+
+.card-img-selected {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--blue-color);
+    border-color: var(--golden-color);
+}
+
+.card-img-selected img {
+    height: 9vw;
+    width: 9vw;
+}
+
+#resetBtn {
+    display: none;
+}
+
+#gameOver {
+    display: none;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+}
+
+.logo {
+    width: 50px;
+    border: 1px solid var(--text-color);
+    border-radius: 5px;
+}
+
+@media (max-width: 700px) {
+    .card-container {
+        width: 15vw;
+        height: 20vw;
+    }
+    .card-container img {
+        width: 15vw;
+        height: 20vw;
+    }
+    .card-img-default img {
+        width: 15vw;
+        height: 20vw;
+    }
+    .card-img-selected img {
+        height: 12vw;
+        width: 12vw;
+    }
+}
+
+@media (max-width: 470px) {
+    .card-container {
+        width: 25vw;
+        height: 30vw;
+    }
+    .card-container img {
+        width: 25vw;
+        height: 30vw;
+    }
+    .card-img-default img {
+        width: 25vw;
+        height: 30vw;
+    }
+    .card-img-selected img {
+        height: 20vw;
+        width: 20vw;
+    }
+}
+
+@media (max-width: 370px) {
+    .card-container {
+        width: 30vw;
+        height: 35vw;
+    }
+    .card-container img {
+        width: 30vw;
+        height: 35vw;
+    }
+    .card-img-default img {
+        width: 30vw;
+        height: 35vw;
+    }
+    .card-img-selected img {
+        height: 25vw;
+        width: 25vw;
+    }
+}
+
+@media (max-width: 300px) {
+    .card-container {
+        width: 50vw;
+        height: 55vw;
+    }
+    .card-container img {
+        width: 50vw;
+        height: 55vw;
+    }
+    .card-img-default img {
+        width: 50vw;
+        height: 55vw;
+    }
+    .card-img-selected img {
+        height: 45vw;
+        width: 45vw;
+    }
 }

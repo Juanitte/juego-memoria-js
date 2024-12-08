@@ -1,22 +1,46 @@
 function getCard(card) {
-    //div - container
     let container = document.createElement("div");
     container.classList.add("card-container");
     container.id = card.id;
-        //img - card
-        let cardImage = document.createElement("img");
-        cardImage.classList.add("card-img");
-        cardImage.src = card.imgLink;
-        cardImage.alt = card.id;
-        //
-    container.appendChild(cardImage);
-    //
+
+    // Carta
+    let cardElement = document.createElement("div");
+    cardElement.classList.add("card");
+
+    // Cara frontal
+    let cardFront = document.createElement("div");
+    cardFront.classList.add("card-face", "card-front");
+    let frontImage = document.createElement("img");
+    frontImage.src = `resources/img/${card.id.toString().split("b")[0]}.png`;
+    cardFront.appendChild(frontImage);
+
+    // Cara trasera
+    let cardBack = document.createElement("div");
+    cardBack.classList.add("card-face", "card-back");
+    let backImage = document.createElement("img");
+    backImage.src = "resources/img/back.png";
+    cardBack.appendChild(backImage);
+
+    // Ensamblar la carta
+    cardElement.appendChild(cardFront);
+    cardElement.appendChild(cardBack);
+    container.appendChild(cardElement);
+
     return container;
 }
 
 function spinCard(card) {
-    if(card.isSelected)
-        card.imgLink = "resources/img/" + card.id + ".png";
-    else
-        card.imgLink = "resources/img/back.png";
+    let cardContainer = document.getElementById(card.id);
+
+    card.isSelected = !card.isSelected;
+    if (card.isSelected) {
+        cardContainer.classList.add("flipped");
+        if (checkCards(card.id)) {
+            updateScore();
+        }
+    } else {
+        cardContainer.classList.remove("flipped");
+    }
+
+    return card.isSelected;
 }
